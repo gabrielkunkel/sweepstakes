@@ -1,6 +1,4 @@
-﻿using sweepstakes;
-
-namespace sweepstakes_console
+﻿namespace sweepstakes_console
 {
   class Program
   {

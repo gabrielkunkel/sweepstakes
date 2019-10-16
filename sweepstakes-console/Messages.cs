@@ -41,6 +41,11 @@ namespace sweepstakes_console
       Print("Currently there is no sweepestakes. You must add one first.");
     }
 
+    public static void PrintNoContestant()
+    {
+      Print("Currently there is no contestant. You must add one first.");
+    }
+
     public static void PrintEmptyLine()
     {
       Print("                    ");

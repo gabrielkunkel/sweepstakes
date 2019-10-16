@@ -8,5 +8,7 @@
 
     bool IsSweepstakes();
 
+    bool IsContestant();
+
   }
 }

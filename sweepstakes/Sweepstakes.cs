@@ -7,7 +7,7 @@ namespace sweepstakes
   public class Sweepstakes
   {
     public string sweepstakesName;
-    Dictionary<string, Contestant> dictionary;
+    public Dictionary<string, Contestant> dictionary;
 
     public Sweepstakes(string name)
     {

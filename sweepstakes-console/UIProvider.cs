@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using sweepstakes;
+using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using sweepstakes;
 
 namespace sweepstakes_console
 {
@@ -33,7 +29,7 @@ namespace sweepstakes_console
       do
       {
         string input = UserInput.GetData("Do you want to add a new sweepstakes OR add a contestant or pick a winner on the current sweepstakes, removing that sweepstakes? (sweepstakes/contestant/winner)", new Regex(regexLetters)).ToLower();
-        DetermineSweepstakesContestantWinnerChoice(input, marketingFirm); 
+        DetermineSweepstakesContestantWinnerChoice(input, marketingFirm);
       } while (true);
     }
 
@@ -64,16 +60,21 @@ namespace sweepstakes_console
 
     private void GetCurrentSweepstakesWinner(MarketingFirm marketingFirm)
     {
-      if (marketingFirm.sweepstakesManager.IsSweepstakes() == true)
+      if (marketingFirm.sweepstakesManager.IsSweepstakes() == false)
+      {
+        Messages.PrintNoSweepstakes();
+      }
+      else if (marketingFirm.sweepstakesManager.IsContestant() == false)
+      {
+        Messages.PrintNoContestant();
+      }
+      else
       {
         Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
         Contestant contestant = workingSweepstakes.PickWinner();
         Messages.PrintWinner(contestant, workingSweepstakes.sweepstakesName);
       }
-      else
-      {
-        Messages.PrintNoSweepstakes();
-      }
+
     }
 
 
@@ -85,7 +86,7 @@ namespace sweepstakes_console
         Contestant contestant = CreateContestant();
         workingSweepstakes.RegisterContestant(contestant);
         Messages.PrintContestantAdded(contestant, workingSweepstakes.sweepstakesName);
-        marketingFirm.sweepstakesManager.InsertSweepStakes(workingSweepstakes); 
+        marketingFirm.sweepstakesManager.InsertSweepStakes(workingSweepstakes);
       }
       else
       {

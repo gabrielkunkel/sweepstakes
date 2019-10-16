@@ -31,5 +31,20 @@ namespace sweepstakes
         return true;
       }
     }
+
+    public bool IsContestant()
+    {
+      Sweepstakes sweepstakes = stack.Peek();
+
+      if (sweepstakes.dictionary.Count == 0)
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+
   }
 }
