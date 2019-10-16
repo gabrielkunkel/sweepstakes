@@ -19,5 +19,10 @@ namespace sweepstakes
       return new MarketingFirm(new SweepstakesQueueManager());
     }
 
+    public static Sweepstakes CreateNewSweepStakes(string nameOfSweepstakes)
+    {
+      return new Sweepstakes(nameOfSweepstakes);
+    }
+
   }
 }

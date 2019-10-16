@@ -9,9 +9,10 @@ namespace sweepstakes
     string sweepstakesName;
     Dictionary<string, Contestant> dictionary;
 
-    public Sweepstakes()
+    public Sweepstakes(string name)
     {
       this.dictionary = new Dictionary<string, Contestant>();
+      this.sweepstakesName = name;
     }
 
     public void RegisterContestant(Contestant contestant)
