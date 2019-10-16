@@ -19,5 +19,17 @@ namespace sweepstakes
     {
       stack.Push(sweepstakes);
     }
+
+    public bool IsSweepstakes()
+    {
+      if (stack.Peek() == null)
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
   }
 }

@@ -6,5 +6,7 @@
 
     Sweepstakes GetSweepstakes();
 
+    bool IsSweepstakes();
+
   }
 }

@@ -19,5 +19,17 @@ namespace sweepstakes
     {
       queue.Enqueue(sweepstakes);
     }
+
+    public bool IsSweepstakes()
+    {
+      if (queue.Peek() == null)
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
   }
 }

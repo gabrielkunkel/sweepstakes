@@ -64,18 +64,33 @@ namespace sweepstakes_console
 
     private void GetCurrentSweepstakesWinner(MarketingFirm marketingFirm)
     {
-      Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
-      Contestant contestant = workingSweepstakes.PickWinner();
-      Messages.PrintWinner(contestant, workingSweepstakes.sweepstakesName);
+      if (marketingFirm.sweepstakesManager.IsSweepstakes() == true)
+      {
+        Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
+        Contestant contestant = workingSweepstakes.PickWinner();
+        Messages.PrintWinner(contestant, workingSweepstakes.sweepstakesName);
+      }
+      else
+      {
+        Messages.PrintNoSweepstakes();
+      }
     }
+
 
     private void RegisterContestant(MarketingFirm marketingFirm)
     {
-      Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
-      Contestant contestant = CreateContestant();
-      workingSweepstakes.RegisterContestant(contestant);
-      Messages.PrintContestantAdded(contestant, workingSweepstakes.sweepstakesName);
-      marketingFirm.sweepstakesManager.InsertSweepStakes(workingSweepstakes);
+      if (marketingFirm.sweepstakesManager.IsSweepstakes() == true)
+      {
+        Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
+        Contestant contestant = CreateContestant();
+        workingSweepstakes.RegisterContestant(contestant);
+        Messages.PrintContestantAdded(contestant, workingSweepstakes.sweepstakesName);
+        marketingFirm.sweepstakesManager.InsertSweepStakes(workingSweepstakes); 
+      }
+      else
+      {
+        Messages.PrintNoSweepstakes();
+      }
     }
 
     private Contestant CreateContestant()
