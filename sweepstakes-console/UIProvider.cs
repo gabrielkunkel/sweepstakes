@@ -28,12 +28,57 @@ namespace sweepstakes_console
       return DetermineMarketingFirmManager(input);
     }
 
-    public string AddSweepstakesContestantOrPickWinner(MarketingFirm marketing)
+    public void RunPrimaryLoop(MarketingFirm marketingFirm)
     {
-      return UserInput.GetData("Do you want to add a new sweepstakes OR add a contestant or pick a winner on the current sweepstakes, removing that sweepstakes? (sweepstakes/contestant/winner)", new Regex(regexQueueOrStack)).ToLower();
+      do
+      {
+        string input = UserInput.GetData("Do you want to add a new sweepstakes OR add a contestant or pick a winner on the current sweepstakes, removing that sweepstakes? (sweepstakes/contestant/winner)", new Regex(regexQueueOrStack)).ToLower();
+        DetermineSweepstakesContestantWinnerChoice(input, marketingFirm); 
+      } while (true);
     }
 
-    private Contestant AddContestantToCurrentSweepstakes()
+    private void DetermineSweepstakesContestantWinnerChoice(String input, MarketingFirm marketingFirm)
+    {
+      switch (input)
+      {
+        case "sweepstakes":
+          AddSweepstakes(marketingFirm);
+          break;
+        case "contestant":
+          RegisterContestant(marketingFirm);
+          break;
+        case "winner":
+          GetCurrentSweepstakesWinner(marketingFirm);
+          break;
+        default:
+          break;
+      }
+    }
+
+    private void AddSweepstakes(MarketingFirm marketing)
+    {
+      string input = UserInput.GetData("What is the name of the new sweepstakes?", new Regex(regexLetters));
+      marketing.CreateSweepStakes(input);
+      Messages.PrintSweepstakesAdded(input);
+    }
+
+    private void GetCurrentSweepstakesWinner(MarketingFirm marketingFirm)
+    {
+      Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
+      Contestant contestant = workingSweepstakes.PickWinner();
+      Messages.PrintWinner(contestant, workingSweepstakes.sweepstakesName);
+    }
+
+    private void RegisterContestant(MarketingFirm marketingFirm)
+    {
+      Sweepstakes workingSweepstakes = marketingFirm.sweepstakesManager.GetSweepstakes();
+      Contestant contestant = CreateContestant();
+      workingSweepstakes.RegisterContestant(contestant);
+      Messages.PrintContestantAdded(contestant, workingSweepstakes.sweepstakesName);
+      marketingFirm.sweepstakesManager.InsertSweepStakes(workingSweepstakes);
+    }
+
+    private Contestant CreateContestant()
     {
       Contestant contestant = SweepstakesFactory.CreateContestant();
       contestant.registrationNumber = UserInput.GetData("Enter new contenstant registration number", new Regex (regexLettersNumbersUnderscore));

@@ -20,12 +20,7 @@ namespace sweepstakes_console
     public void Run()
     {
       marketingFirm = ui.CreateStackOrQueueManager();
-
-      // add sweepstakes
-
-      // add contestant to this most recent sweepstakes
-
-      // pick winner of most recent sweepstakes
+      ui.RunPrimaryLoop(marketingFirm);
     }
 
   }

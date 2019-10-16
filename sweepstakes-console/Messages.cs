@@ -13,6 +13,24 @@ namespace sweepstakes_console
       Console.ResetColor();
     }
 
+    public static void PrintWinner(Contestant contestant, string sweepstakesName)
+    {
+      Print($"{sweepstakesName} Sweepstakes winner!");
+      PrintDashedLine();
+      PrintContestant(contestant);
+      Print($"{sweepstakesName} sweepstakes is now over.");
+    }
+
+    public static void PrintSweepstakesAdded(string sweepstakesName)
+    {
+      Print($"{sweepstakesName} sweepstakes added.");
+    }
+
+    public static void PrintContestantAdded(Contestant contestant, string sweepstakesName)
+    {
+      Print($"Contestant {contestant.firstName} {contestant.lastName} added to {sweepstakesName}.");
+    }
+
     public static void PrintContestant(Contestant contestant)
     {
       Sweepstakes.PrintContestantInfo(contestant);
