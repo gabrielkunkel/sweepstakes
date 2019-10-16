@@ -36,6 +36,11 @@ namespace sweepstakes_console
       Sweepstakes.PrintContestantInfo(contestant);
     }
 
+    public static void PrintNoSweepstakes()
+    {
+      Print("Currently there is no sweepestakes. You must add one first.");
+    }
+
     public static void PrintEmptyLine()
     {
       Print("                    ");

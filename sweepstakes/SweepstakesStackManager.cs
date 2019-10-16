@@ -22,7 +22,7 @@ namespace sweepstakes
 
     public bool IsSweepstakes()
     {
-      if (stack.Peek() == null)
+      if (stack.Count == 0)
       {
         return false;
       }
