@@ -8,15 +8,20 @@ namespace sweepstakes
 {
   public class SweepstakesStackManager : ISweepstakesManager
   {
-    private List<Sweepstakes> queue;
+    private Stack<Sweepstakes> stack;
+
+    public SweepstakesStackManager()
+    {
+      stack = new Stack<Sweepstakes>();
+    }
     public Sweepstakes GetSweepstakes()
     {
-      throw new NotImplementedException();
+      return stack.Pop();
     }
 
     public void InsertSweepStakes(Sweepstakes sweepstakes)
     {
-      throw new NotImplementedException();
+      stack.Push(sweepstakes);
     }
   }
 }
