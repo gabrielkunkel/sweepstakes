@@ -1,22 +1,37 @@
-﻿namespace sweepstakes
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace sweepstakes
 {
   public class Sweepstakes
   { 
     string sweepstakesName;
+    Dictionary<string, Contestant> dictionary;
+
+    public Sweepstakes()
+    {
+      this.dictionary = new Dictionary<string, Contestant>();
+    }
 
     public void RegisterContestant(Contestant contestant)
     {
-      // add contestant to dictionary?
+      dictionary.Add(contestant.registrationNumber, contestant);
     }
 
-    public void PickWinner()
+    public Contestant PickWinner()
     {
-      // pick a winner from dictionary
+      Random rng = new Random(Guid.NewGuid().GetHashCode());
+      int chosenContestant = rng.Next(0, dictionary.Count - 1);
+      return dictionary.ElementAt(chosenContestant).Value;
     }
 
-    public void PrintContestantInfo(Contestant contestant)
+    public static void PrintContestantInfo(Contestant contestant)
     {
-      // from dictionary
+      Console.WriteLine($"Contestant registration number: {contestant.registrationNumber}");
+      Console.WriteLine($"First Name: {contestant.firstName}");
+      Console.WriteLine($"Last Name: {contestant.lastName}");
+      Console.WriteLine($"Email: {contestant.email}");
     }
   }
 }
