@@ -32,7 +32,7 @@ namespace sweepstakes_console
     {
       do
       {
-        string input = UserInput.GetData("Do you want to add a new sweepstakes OR add a contestant or pick a winner on the current sweepstakes, removing that sweepstakes? (sweepstakes/contestant/winner)", new Regex(regexQueueOrStack)).ToLower();
+        string input = UserInput.GetData("Do you want to add a new sweepstakes OR add a contestant or pick a winner on the current sweepstakes, removing that sweepstakes? (sweepstakes/contestant/winner)", new Regex(regexLetters)).ToLower();
         DetermineSweepstakesContestantWinnerChoice(input, marketingFirm); 
       } while (true);
     }
