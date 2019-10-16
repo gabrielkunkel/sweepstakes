@@ -1,6 +1,6 @@
 ﻿namespace sweepstakes
 {
-  static class SweepstakesFactory
+  public static class SweepstakesFactory
   {
 
     public static MarketingFirm CreateSweepstakesStackManager()
@@ -16,6 +16,11 @@
     public static Sweepstakes CreateNewSweepStakes(string nameOfSweepstakes)
     {
       return new Sweepstakes(nameOfSweepstakes);
+    }
+
+    public static Contestant CreateContestant()
+    {
+      return new Contestant();
     }
 
 

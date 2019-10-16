@@ -7,5 +7,10 @@
     public string email;
     public string registrationNumber;
 
+    public Contestant()
+    {
+
+    }
+
   }
 }

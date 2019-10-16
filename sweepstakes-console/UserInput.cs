@@ -50,6 +50,10 @@ namespace sweepstakes_console
       {
         Console.WriteLine("This field only accepts letters, numbers, or underscores. Try again.");
       }
+      else if (regex.Match("bob@smith.com").Success)
+      {
+        Console.WriteLine("This field only accepts email addresses. Try again.");
+      }
       else
       {
         Console.WriteLine("That is invalid input. Try again.");

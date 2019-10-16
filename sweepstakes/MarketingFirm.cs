@@ -1,6 +1,6 @@
 ﻿namespace sweepstakes
 {
-  class MarketingFirm
+  public class MarketingFirm
   {
 
     public ISweepstakesManager sweepstakesManager;
