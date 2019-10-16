@@ -8,13 +8,17 @@ namespace sweepstakes
 {
   class MarketingFirm
   {
-    // todo: has the functionality to create a sweepstakes
 
-    ISweepstakesManager sweepstakesManager;
+    public ISweepstakesManager sweepstakesManager;
 
     public MarketingFirm(ISweepstakesManager sweepstakesManager)
     {
-      this.sweepstakesManager = sweepstakesManager
+      this.sweepstakesManager = sweepstakesManager;
+    }
+
+    public void CreateSweepStakes(string nameOfSweepstakes)
+    {
+      sweepstakesManager.InsertSweepStakes(SweepstakesFactory.CreateNewSweepStakes(nameOfSweepstakes));
     }
 
   }
