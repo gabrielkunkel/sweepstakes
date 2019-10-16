@@ -14,7 +14,7 @@ namespace sweepstakes_console
     private string regexYesOrNo = @"(\byes\b)|(\bno\b)";
     private string regexQueueOrStack = @"(\bstack\b)|(\bqueue\b)";
     private string regexLetters = @"(?i)^[a-z]+";
-    private string regexLettersNumbersUnderscore = @"^[a-zA-Z0-9\_]+$";
+    private string regexLettersNumbersUnderscore = @"^[a-zA-Z0-9_.-]+$";
     private string regexEmail = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
     public UIProvider()
@@ -81,7 +81,7 @@ namespace sweepstakes_console
     private Contestant CreateContestant()
     {
       Contestant contestant = SweepstakesFactory.CreateContestant();
-      contestant.registrationNumber = UserInput.GetData("Enter new contenstant registration number", new Regex (regexLettersNumbersUnderscore));
+      contestant.registrationNumber = UserInput.GetData("Enter new contenstant registration number", new Regex(regexLettersNumbersUnderscore));
       contestant.firstName = UserInput.GetData("Contestant First Name: ", new Regex(regexLetters));
       contestant.lastName = UserInput.GetData("Contestant Last Name: ", new Regex(regexLetters));
       contestant.email = UserInput.GetData("Contestant Email: ", new Regex(regexEmail));
