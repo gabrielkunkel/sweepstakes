@@ -5,7 +5,7 @@ using System.Linq;
 namespace sweepstakes
 {
   public class Sweepstakes
-  { 
+  {
     string sweepstakesName;
     Dictionary<string, Contestant> dictionary;
 
